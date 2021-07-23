@@ -1,19 +1,16 @@
-import React from 'react';
+import React, {useState} from 'react';
 import './App.css';
 
 function App() {
-  const hello = <Hello name="John" />
-  return hello
+  return <Hello name="John" />
 }
 
-// function Hello(props) {
-//   return <h1>Hello, {props.name}!</h1>
-// }
+function Hello(props) {
+  // 宣告state變數name並設定初值"John"，回傳name及更新name的函式setName()
+  const [name, setName] = useState("John") // useState is a 'Hook'
 
-class Hello extends React.Component {
-  render() {
-    return <h1>Hello, {this.props.name}!</h1>
-  }
+  // 點擊<h1>時呼叫setName()更新state變數name的值
+  return <h1 onClick={() => setName("Mary")}>Hello, {name}!</h1>
 }
 
 export default App;
