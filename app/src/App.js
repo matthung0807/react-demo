@@ -1,19 +1,22 @@
 import React from 'react';
 import './App.css';
 
-function App() {
-  const hello = <Hello name="John" />
-  return hello
+const WrappedComponent = props => {
+  return <span>{props.name}</span>
 }
 
-// function Hello(props) {
-//   return <h1>Hello, {props.name}!</h1>
-// }
-
-class Hello extends React.Component {
-  render() {
-    return <h1>Hello, {this.props.name}!</h1>
+const higherOrderComponent = (WrappedComponent, props) => {
+  return class extends React.Component { // return a Component class
+    render() {
+      return <h1>Hello, <WrappedComponent name={props.name}/>!</h1>
+    }
   }
+}
+
+const EnhancedComponent = higherOrderComponent(WrappedComponent, {name: "John"})
+
+function App() {
+  return <EnhancedComponent/>
 }
 
 export default App;
