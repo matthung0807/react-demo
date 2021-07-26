@@ -1,7 +1,11 @@
+import loadable from '@loadable/component'
+
 import './App.css';
 
+const Hello = loadable(() => import('./greeting/Hello'));
+
 function App() {
-  return <h1>Hello, world!</h1>
+  return <Hello name = "John"/>
 }
 
 export default App;
