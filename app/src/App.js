@@ -13,9 +13,9 @@ const higherOrderComponent = (WrappedComponent, props) => {
   }
 }
 
-const EnhancedComponent = higherOrderComponent(WrappedComponent, {name: "John"})
 
 function App() {
+  const EnhancedComponent = higherOrderComponent(WrappedComponent, {name: "John"})
   return <EnhancedComponent/>
 }
 
