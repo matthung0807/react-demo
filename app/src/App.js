@@ -2,50 +2,41 @@ import React, {useState} from "react";
 import "./App.css";
 
 function App() {
-  const HelloWithLike = withLike(Hello, {name: "John"});
-  const HiWithLike = withLike(Hi, {name: "Mary"});
   return (
     <div>
-      <HelloWithLike />
-      <HiWithLike />
+      <Hello name="John"/>
+      <Hi name="Mary"/>
     </div>
   );
 }
 
-const withLike = (Component, props) => {
-  return () => (
-    <Like>
-      {(handleLike, count) => (
-        <Component {...props} like={handleLike} count={count} />
-      )}
-    </Like>
-  );
-};
-
-const Like = (props) => {
+const useLike = () => {
   const [count, setCount] = useState(0);
 
-  const handleLike = () => {
-    setCount(count + 1);
-  };
-
-  return <div>{props.children(handleLike, count)}</div>;
+  return [
+    function handleLike() {
+      setCount(count + 1);
+    },
+    count];
 };
 
 const Hello = (props) => {
+  const [handleLike, count] = useLike();
+
   return (
     <div>
-      <h1 onClick={props.like}>Hello, {props.name}</h1>
-      <span>Like:{props.count}</span>
+      <h1 onClick={handleLike}>Hello, {props.name}</h1>
+      <span>Like:{count}</span>
     </div>
   );
 };
 
 const Hi = (props) => {
+  const [handleLike, count] = useLike();
   return (
     <div>
-      <h1 onClick={props.like}>Hi, {props.name}</h1>
-      <span>Like:{props.count}</span>
+      <h1 onClick={handleLike}>Hi, {props.name}</h1>
+      <span>Like:{count}</span>
     </div>
   );
 };
