@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import "./App.css";
 
 function App() {
@@ -12,58 +12,42 @@ function App() {
   );
 }
 
-function withLike(Component, props) {
-  return class extends React.Component {
-    render() {
-      return (
-        <Like>
-          {(handleLike, count) => (
-            <Component {...props} like={handleLike} count={count} />
-          )}
-        </Like>
-      );
-    }
-  };
-}
+const withLike = (Component, props) => {
+  return () => (
+    <Like>
+      {(handleLike, count) => (
+        <Component {...props} like={handleLike} count={count} />
+      )}
+    </Like>
+  );
+};
 
-class Like extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {count: 0};
+const Like = (props) => {
+  const [count, setCount] = useState(0);
 
-    this.handleLike = this.handleLike.bind(this);
-  }
-
-  handleLike = () => {
-    let count = this.state.count;
-    this.setState({count: ++count});
+  const handleLike = () => {
+    setCount(count + 1);
   };
 
-  render() {
-    return <div>{this.props.children(this.handleLike, this.state.count)}</div>;
-  }
-}
+  return <div>{props.children(handleLike, count)}</div>;
+};
 
-class Hello extends React.Component {
-  render() {
-    return (
-      <div>
-        <h1 onClick={this.props.like}>Hello, {this.props.name}</h1>
-        <span>Like:{this.props.count}</span>
-      </div>
-    );
-  }
-}
+const Hello = (props) => {
+  return (
+    <div>
+      <h1 onClick={props.like}>Hello, {props.name}</h1>
+      <span>Like:{props.count}</span>
+    </div>
+  );
+};
 
-class Hi extends React.Component {
-  render() {
-    return (
-      <div>
-        <h1 onClick={this.props.like}>Hi, {this.props.name}</h1>
-        <span>Like:{this.props.count}</span>
-      </div>
-    );
-  }
-}
+const Hi = (props) => {
+  return (
+    <div>
+      <h1 onClick={props.like}>Hi, {props.name}</h1>
+      <span>Like:{props.count}</span>
+    </div>
+  );
+};
 
 export default App;
