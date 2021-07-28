@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import './App.css';
 
 function App() {
@@ -6,11 +6,20 @@ function App() {
 }
 
 function Hello(props) {
-  // 宣告state變數name並設定初值"John"，回傳name及更新name的函式setName()
-  const [name, setName] = useState("John") // useState is a 'Hook'
 
-  // 點擊<h1>時呼叫setName()更新state變數name的值
-  return <h1 onClick={() => setName("Mary")}>Hello, {name}!</h1>
+  const [count, setCount] = useState(0)
+
+  useEffect(() => {
+    if (count === 10) {
+      document.body.style.backgroundColor = "yellow";
+    }
+  })
+
+  const addCount = () => {
+    setCount(count + 1)
+  }
+
+  return <h1 onClick={addCount}>Hello, {props.name}! {`count: ${count}`}</h1>
 }
 
 export default App;
