@@ -4,8 +4,8 @@ import "./App.css";
 function App() {
   return (
     <div>
-      <Hello name="John"/>
-      <Hi name="Mary"/>
+      <Hello name='John' />
+      <Hi name='Mary' />
     </div>
   );
 }
@@ -14,10 +14,11 @@ const useLike = () => {
   const [count, setCount] = useState(0);
 
   return [
-    function handleLike() {
+    () => {
       setCount(count + 1);
     },
-    count];
+    count,
+  ];
 };
 
 const Hello = (props) => {
