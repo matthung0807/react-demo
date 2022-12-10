@@ -15,7 +15,7 @@ const Row = () => {
     fetch("http://localhost:8080/employees")
     .then(response => response.json())
     .then(data => setEmployees(data))
-  })
+  }, [])
 
   return employees.map((emp, i) => {
     return (
