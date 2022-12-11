@@ -3,8 +3,7 @@ import './App.css';
 
 function App() {
   return (
-    <Message>
-    </Message>
+    <Message/>
   );
 }
 
@@ -13,8 +12,7 @@ const ws = new WebSocket('ws://localhost:8080/echo');
 const Message = () => {
   const [message, setMessage] = useState([])
   useEffect(() => {
-    ws.addEventListener('message', function(e) {
-      let data = e.data;
+    ws.addEventListener('message', (event) => {
       setMessage(data)
     })
   },[])
