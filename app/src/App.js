@@ -3,8 +3,7 @@ import './App.css';
 
 function App() {
   return (
-    <Message>
-    </Message>
+    <Message/>
   );
 }
 
