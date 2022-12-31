@@ -1,4 +1,4 @@
 # react-demo
 React.js Demo
 
-[React fetch data from Go REST API](https://matthung0807.blogspot.com/2022/12/blog-post.html)
+[React Material UI fetch data from Go](https://matthung0807.blogspot.com/2022/12/react-mui-fetch-data-from-go.html)
