@@ -1,9 +1,13 @@
 import './App.css';
 
 import * as React from 'react';
+import { Message } from 'Message';
+
 
 function App() {
-  return <h1>Hello, world!</h1>
+  return (
+    <Message/>
+  )
 }
 
 export default App;
