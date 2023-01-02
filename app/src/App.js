@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import "./App.css";
 
+import * as React from 'react';
+
 function App() {
   return (
     <Table>
@@ -17,15 +19,21 @@ const Row = () => {
     .then(data => setEmployees(data))
   }, [])
 
-  return employees.map((emp, i) => {
-    return (
-      <tr key={emp.id}>
-        <td>{emp.id}</td>
-        <td>{emp.name}</td>
-        <td>{emp.age}</td>
-      </tr>
-    );
-  });
+  return (
+    <>
+      {
+        employees.map((emp, i) => {
+          return (
+            <tr key={emp.id}>
+              <td>{emp.id}</td>
+              <td>{emp.name}</td>
+              <td>{emp.age}</td>
+            </tr>
+          );
+        })
+      }
+    </>
+  )
 };
 
 const Table = (props) => {
