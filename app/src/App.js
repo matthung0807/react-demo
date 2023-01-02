@@ -34,19 +34,25 @@ const Message = () => {
     .then(data => setMessages(data))
   },[])
 
-  return messages.map((message) => {
-    return (
-      <Box>
-        <List>
-          <ListItem disablePadding>
-            <ListItemButton>
-              <ListItemText primary={message} />
-            </ListItemButton>
-          </ListItem>
-        </List>
-      </Box>
-    )
-  })
+  return (
+    <>
+      {
+        messages.map((message) => {
+          return (
+            <Box>
+              <List>
+                <ListItem disablePadding>
+                  <ListItemButton>
+                    <ListItemText primary={message} />
+                  </ListItemButton>
+                </ListItem>
+              </List>
+            </Box>
+          )
+        })
+      }
+    </>
+  )
 }
 
 export default App;
