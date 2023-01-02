@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import './App.css';
 
+import * as React from 'react'
+
 function App() {
   return (
     <Message/>
@@ -13,7 +15,7 @@ const Message = () => {
   const [message, setMessage] = useState([])
   useEffect(() => {
     ws.addEventListener('message', (event) => {
-      setMessage(data)
+      setMessage(event.data)
     })
   },[])
 
