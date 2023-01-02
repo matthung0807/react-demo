@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import './App.css';
 
+import * as React from 'react';
+
 function App() {
   return (
     <Message/>
@@ -15,11 +17,17 @@ const Message = () => {
     .then(data => setMessages(data))
   },[])
 
-  return messages.map((message, i) => {
-    return (
-     <div key={i}>{message}</div>
-    )
-  })
+  return (
+    <>
+      {
+        messages.map((message, i) => {
+          return (
+          <div key={i}>{message}</div>
+          )
+        })
+      }
+    </>
+  )
 }
 
 export default App;
