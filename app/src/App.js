@@ -1,12 +1,12 @@
 import './App.css';
 
 import * as React from 'react';
-import { Message } from 'Message';
+import { Chart } from 'Chart';
 
 
 function App() {
   return (
-    <Message/>
+    <Chart/>
   )
 }
 
