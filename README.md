@@ -1,4 +1,4 @@
 # react-demo
 React.js Demo
 
-[React 安裝Recharts圖表函式庫](https://matthung0807.blogspot.com/2024/03/react-install-recharts-chart-library.html)
+[React Recharts繪製AWS EC2 Instance CPUUtilization指標折線圖](https://matthung0807.blogspot.com/2024/03/react-recharts-render-aws-ec2-instance-cpuutilization-metric-line-chart.html)
