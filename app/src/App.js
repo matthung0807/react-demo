@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import './App.css';
+import axios from 'axios';
 
 import * as React from 'react';
 
@@ -12,9 +13,16 @@ function App() {
 const Message = () => {
   const [messages, setMessages] = useState([])
   useEffect(() => {
-    fetch("http://localhost:8080/messages")
-    .then(response => response.json())
-    .then(data => setMessages(data))
+    axios.get('http://localhost:8080/messages')
+      .then(resp => {
+        setMessages(resp.data)
+      })
+      .catch(error => {
+        console.log(error)
+      })
+      .finally(() => {
+        console.log('done')
+      })
   },[])
 
   return (
